@@ -2,6 +2,8 @@
     $page_name = basename($_SERVER['PHP_SELF']);
   ?>
 
+  
+
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -85,17 +87,24 @@
 				<p2><?php  echo $rows['Price']; ?></p2>
 			</div><!-- detail-food -->
 
-			<div class="button-cart">
-				<button class="cart"><i class="fa fa-shopping-cart"></i>&nbsp;เพิ่มลงตระกร้า</button>
-			</div><!-- end button-cart -->
 
 			
+
+			<div class="button-cart">
+
+			<a href="menu.php?Menu_id=<?php echo $rows['Menu_id']; ?>"><button class="cart"><i class="fa fa-shopping-cart"></i>&nbsp;เพิ่มลงตระกร้า</button></a>
+
+			</div><!-- end button-cart -->
+
+
+
 
 		</div><!-- box1 -->
 
 <?php }
     ?>
-		
+
+
 	</div><!-- end wrap-food --> 
 	
 
@@ -107,7 +116,13 @@
 	<footer><center><img src="img/footer.png"></center></footer>
 
 
-
+<?php 
+				$test =  $_GET["Menu_id"];
+				$SESSION["menu"][]= $test;
+				// unset($_SESSION["menu"]);
+				// var_dump($SESSION["menu"]);
+	?>
 
 </body>
 </html>
+

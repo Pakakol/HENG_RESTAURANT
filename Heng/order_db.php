@@ -15,7 +15,7 @@
 	$tel = $_POST['tel'];
 
 
-	$sql ="INSERT INTO Order (food_name,amount,price,name_customer,address,tel) 
+	$sql ="INSERT INTO Order (name_customer,address,tel) 
 		   VALUES ('{$name_customer}','{$address}','{$tel}')";
 
     $query = mysqli_query($objConnect,$sql);
@@ -26,7 +26,7 @@
     }else{
     	
     	
-    	header('location:news_success.php');
+    	header('location:success.php');
 
     }
 

@@ -1,3 +1,6 @@
+<?php unset($_SESSION["menu"]);
+ ?>
+
 <html>
 <head>
 	<title>Delivery | Cart</title>

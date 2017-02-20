@@ -1,3 +1,9 @@
+<?php session_start();
+    $page_name = basename($_SERVER['PHP_SELF']);
+
+    require './connect.php';
+  ?>
+
 <html>
 <head>
 	<title>Delivery | Cart</title>
@@ -55,8 +61,20 @@
 
 	<div class="wrap-cart">
 
+		<?php 
+		
+
+          $sql="SELECT * FROM Order;";
+          $query = mysqli_query($objConnect,$sql);
+
+          while ($rows=mysqli_fetch_array($query)) {
+            
+         ?> 
+
+
+
 		<div class="box-2">
-				<div class="cart-img"><img src="img/f10.png"></div>
+				<div class="cart-img"><img src="<?php  echo $rows['pics']; ?>"></div>
 				<div class="details-cart">
 					เส้นใหญ่ราดหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p2>40 บาท</p2>
@@ -66,28 +84,13 @@
 				<div class="add-bar">จำนวน&nbsp;&nbsp; <input type="text" id="numfood">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button class="cart"><i class="fa fa-trash"></i>&nbsp;&nbsp;DELETE</button> </div><!-- add-bar -->
 		</div><!-- box-2 -->
-
-
-	</div><!-- wrap-cart -->
-
-	<div class="wrap-cart">
-
-		<div class="box-2">
-				<div class="cart-img"><img src="img/f11.png"></div>
-				<div class="details-cart">
-					เส้นใหญ่ราดหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p2>40 บาท</p2>
-
-				</div><!-- details-cart -->
-
-				<div class="add-bar">จำนวน&nbsp;&nbsp; <input type="text" id="numfood">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button class="cart"><i class="fa fa-trash"></i>&nbsp;&nbsp;DELETE</button> </div><!-- add-bar -->
-		</div><!-- box-2 -->
-
+<?php }
+    ?>
 
 	</div><!-- wrap-cart -->
 
-	</div><!-- wrap-cart -->
+	
+	
 
 	<div class="wrap-cart">
 
@@ -110,7 +113,7 @@
 		<h2>ส่งอาหารที่...</h2> <br>
 			<div class="address">
 
-				<!-- <form action="order_db.php" method="POST" enctype="multipart/form-data"> -->
+				<form action="order_db.php" method="POST">
 
 				ชื่อ-นามสกุล*&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="text" class="ip-ad" name="name_customer"><br>
@@ -123,7 +126,7 @@
 				<a href="success.php"><button id="confirm">Confirm</button></a>
 				<!-- <button id="confirm" type="submit" value="confirm" name="confirm">Confirm</button> -->
 
-				  <!-- </form> -->
+				  </form>
 
 	</div><!-- address -->
 	</div><!-- wrap-cart -->
