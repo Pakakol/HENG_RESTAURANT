@@ -1,0 +1,15 @@
+body{background: #f2f2f2;}
+.head-line{
+	background: #612f0e;
+	height: 6px;
+}
+.head-dot{
+	border-top: 1px dotted #612f0e;
+	margin: 20px 0 20px 0;
+}
+.space-top{
+	margin-top: 30px;
+}
+.space-a{
+	margin-top: 12px; 
+}

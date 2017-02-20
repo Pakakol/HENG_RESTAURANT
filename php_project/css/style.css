@@ -1,0 +1,417 @@
+
+header{
+	height: 230px;
+	text-align: center;
+	/*background:#333;*/
+	position: relative;
+	font-size: 25px;
+
+}
+header img{
+	padding: 0px 0 35px 0;
+}
+nav a{	
+	text-decoration: none;
+	color: #000;
+	padding: 0 20px;
+	font-weight: bold;
+}
+nav a:hover{	
+	color: #ffbc4c;
+}
+.menuActive{
+	color: #ffbc4c;
+}
+#loginAndCart{
+	text-align: right;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+#loginAndCart button{
+	height: 35px;
+	width: 35px;
+	border-radius: 35px;
+	border: none;
+	background: #23211e;
+	font-size: 18px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	margin: 10px 10px 0px 10px;
+	color: #fff;
+}
+#loginAndCart button:hover{
+	background: #ffbc4c;
+}
+#loginAndCart a{
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+}
+#loginAndCart a:hover{
+	color: #ffbc4c;
+}
+
+.contrainer{
+	width: 960px;
+	margin: 0 auto;
+}
+
+/*---article slider---*/
+#sliderHome{
+	height: 510px;
+	width: 100%;
+	position: relative;
+}
+#sliderHome img{
+	height: 510px;
+	width: 100%;
+}
+#orderNow{
+	position: absolute;
+	top: 352px;
+	left: 44%;
+	height: 65px;
+	width: 12%;
+	font-size: 30px;
+	background: #fff;
+	border: none;
+	opacity: 0;
+}
+
+
+/*---article menu---*/
+#menuCakeHome{
+	height: 490px;
+	width: 100%;
+	background: #23211e;
+	text-align: center;
+	color: #fff;
+}
+#menuCakeHome h1{
+	font-size: 50px;
+	padding: 40px 0 30px 0;
+}
+.menuEventBox {
+	width: 220px;
+	height: 240px;
+	float: left;
+	margin: 0 10px;
+	font-size: 18px;
+	text-align: left;
+}
+.imgMenuBox{
+	width: 220px;
+	height: 200px;
+	margin-bottom: 10px;
+}
+.menuEventBox button{
+	background:transparent;
+	color: #9d7d4d;
+	font-size: 18px;
+	border: none;
+	float: right;
+}
+.menuEventBox button:hover{
+	color: #ffbc4c;
+}
+
+
+/*---About Us in Home---*/
+#aboutInHome{
+	height: 600px;
+	width: 100%;
+}
+#aboutInHome aside{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+#aboutInHome aside img{
+	width: 100%;
+	height: 100%;
+}
+#aboutHomeText{
+	text-align: center;
+	font-size: 20px;
+	width: 480px;
+	line-height: 30px;
+	font-weight: bold;
+	padding-top: 60px;
+}
+#aboutHomeText h2{
+	padding: 60px 0;
+}
+
+
+/*---view all button---*/
+.viewAll{
+	height: 45px;
+	width: 150px;
+	background:transparent;
+	border: 5px solid #fff;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 25px;
+	margin: 10px;
+	float: right;
+}
+.viewAll:hover{
+	background: #fff;
+	color: #23211e;
+}
+
+
+/*---event and Promotion---*/
+#eventPromotion{
+	height: 490px;
+	width: 100%;
+	background: #23211e;
+	text-align: center;
+	color: #fff;
+}
+.contrainer h2{
+	color:#fff;
+	padding: 40px 0 30px 0;
+}
+
+
+/*---footer---*/
+footer{
+	height: 80px;
+	width: 100%;
+	background: #000;
+	color: #fff;
+	font-size: 16px;
+	position: relative;
+}
+footer .contrainer{
+	padding: 30px;
+}
+footer a{
+	color: #fff;
+}
+footer a:hover{
+	color: #ffbc4c;
+}
+.footerIcon{
+	float: right;
+	margin: 0 5px;
+}
+#pageUp{
+	position: absolute;
+	right: 30px;
+	bottom: 15px;
+}
+
+
+
+
+
+
+/*menu*/
+#menuCakeHome_menu{
+	height: 500px;
+	width: 100%;
+	background: #ffffff;
+	text-align: center;
+	color: #000;
+}
+#menuCakeHome_menu h1{
+	font-size: 50px;
+	padding: 20px 0 0 0;
+	color: #bd9757;
+}
+#menuCakeHome_menu p{
+	font-size: 24px;
+	color: #000;
+}
+.line {
+	height: 2px;
+	width: 96%;
+	margin: 0 auto 20px 20px;
+	background: black;
+}
+#menuCakeHome_menu h3{
+	color: black;
+	font-size: 30px;
+	text-align: center;
+	margin: 0 0 20px 0;
+}
+.menupopularBox {
+	width: 280px;
+	height: 280px;
+	margin: 0 20px 0 20px;
+	float: left;
+	font-weight: bold;
+}
+.imgMenuBox_popular{
+	width: 280px;
+	height: 200px;
+	margin-bottom: 20px;
+}
+.title_name{
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.menupopularBox button{
+	background:transparent;
+	color: #878787;
+	font-size: 18px;
+	border: none;
+	margin-left: 20px;
+}
+.menupopularBox button:hover{
+	color: #b09177;
+}
+/*menuall*/
+#Menu_all{
+	height: 100%;
+	width: 100%;
+	background: #c9c9c6;
+	text-align: center;
+	color: black;
+	padding-top: 20px;
+	font-weight: bold;
+}
+#btn_menuall{
+	width: 100%;
+	height: 50px;
+	padding-left: 100px;
+}
+#btn_menuall a .btn_menuall{
+	height: 30px;
+	width: 150px;
+	background:white;
+	font-size: 25px;
+	margin-left: 30px;
+	float: left;
+	border: none;
+	padding-top: 10px;
+	text-decoration: none;
+	color: black;
+}
+#btn_menuall a .btn_menuall:hover{
+	text-decoration: none;
+	background: black;
+	color: white;
+}
+#btn_menuall a .Menu_all_active{
+	height: 30px;
+	width: 150px;
+	background:black;
+	font-size: 25px;
+	margin-left: 30px;
+	float: left;
+	border: none;
+	padding-top: 10px;
+	text-decoration: none;
+	color: white;
+}
+.section_menuall_box{
+	width: 100%;
+	height: 290px;
+}
+.menuall_box_all{
+	float: left;
+	width: 220px;
+	height: 290px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.menuall_box_all img .menuall_box_all_img{
+	width: 220px;
+	height: 200px;
+	margin: 10px 0 10px 0;
+}
+.menuall_title_name{
+	color: black;
+	margin-top: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.menuall_box_all button{
+	background:transparent;
+	color: #878787;
+	font-size: 18px;
+	border: none;
+	margin-left: 20px;
+}
+.menuall_box_all button:hover{
+	color: #b09177;
+}
+.Load_more{
+	height: 45px;
+	width: 150px;
+	background:transparent;
+	border: 5px solid black;
+	border-radius: 10px;
+	color: black;
+	font-size: 25px;
+	margin: auto 0 20px auto;
+}
+.Load_more:hover{
+	background: black;
+	color: white;
+}
+.Load_more:focus{
+	background:transparent;
+	border: 5px solid black;
+	color: black;
+}
+
+
+/*log in*/
+.account_customer{
+	margin-top: 50px;
+	height: auto;
+}
+.account_customer h3{
+	color: black;
+	font-size: 30px;
+	text-align: center;
+	margin: 60px 0 0 0;
+}
+.account_customer p{
+	color: black;
+	text-align: center;
+	margin: 10px 0 20px 0;
+	font-weight: bold;
+}
+.account_customer a{
+	margin-top: 20px;
+	color: #ffbc4c;
+	background-color: white;
+	font-weight: bold;
+}
+
+
+/*signup*/
+#sign_up h3{
+	color: black;
+	font-size: 30px;
+	text-align: center;
+	margin: 60px 0 30px 0;
+}
+#sign_up a{
+	margin-top: 20px;
+	color: #ffbc4c;
+	background-color: white;
+	font-weight: bold;
+}
+
+
+/*check_login*/
+#check-login h3{
+	font-size: 30px;
+	color: black;
+	font-weight: bold;
+	margin: 250px 0 0 0;
+}
+#check-login a{
+	font-size: 20px;
+	color: #ffbc4c;
+	background-color: white;
+	font-weight: bold;
+}

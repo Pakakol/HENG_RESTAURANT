@@ -1,0 +1,41 @@
+.table-add th td {
+    border: 1px solid #dedede;
+}
+.table-add tr th{
+	background-color:#eff2f1;
+	color:#000;
+	border:none;
+	width:1500px;
+}
+.table-add tr td{
+	text-align:center;
+}
+.table-add th {
+    border: 1px solid #dedede;
+	width:20%;
+}
+.table-add td {
+    border: 1px solid #dedede;
+}
+.table-add {
+	width: 85%;
+    border-collapse: collapse; 
+	
+}
+	
+.table-addM{
+	color:#666666;
+}
+.table-addM tr{
+	text-align:left;
+	
+}
+.table-addM tr th{
+	width:120px;
+}
+.table-addM button {
+	width:80px;
+	height:35px;
+	background-color:#ff6600;
+	color:#FFF;
+}

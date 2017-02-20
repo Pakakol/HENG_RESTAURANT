@@ -1,0 +1,120 @@
+#sliderHome{
+	height: 510px;
+	width: 100%;
+	position: relative;
+}
+#sliderHome img{
+	height: 510px;
+	width: 100%;
+}
+header{
+	height: 230px;
+	text-align: center;
+	/*background:#333;*/
+	position: relative;
+	font-size: 25px;
+
+
+}
+.head-logo{
+	width: auto;
+	height: 110px;
+	margin-top: 20px;
+	background-color: #ccc;
+	text-align: center;
+	background-color: #fff;
+}
+.user{
+	width: 150px;
+	height: 30px;
+	float: right;
+	font-size: 16px;
+	border-radius: 5px;
+	border-style: dashed;
+    border-width: 2px;
+	border-color: #ccc;
+	text-align: center;
+	padding-top: 10px;
+	margin-right: 5px;
+
+}
+.user a{
+	color: #000000;
+}
+.contain_user {
+	width: 100%;
+	height: 40px;
+	background-color: #FFFFFF;
+	margin-top: 20px;
+}
+.menu{
+	margin-top: 15px;
+
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+ul li{
+	display: inline;
+	margin-right: 10px;
+	
+}
+li a {
+	text-decoration: none;
+	color: black;
+}
+
+.head-dot {
+	border-top: 2px dashed #7A7A7A;
+	margin: 20px 0px 20px 0px;
+}
+button{
+	padding-top: 20px;
+}
+.btn{
+	width: 200px;
+	height: 30px;
+	font-size: 14px;
+	border-radius: 5px;
+	border-style: dashed;
+    border-width: 2px;
+	border-color: #ccc;
+	text-align: center;
+	padding-top: 15px;
+	margin-top: 20px;
+	margin-left: 150px;
+	float: left;
+	background-color: #fff;
+
+}
+.btn:hover{
+	background-color: #ccc;
+	opacity: 50%;
+	border-radius: 5px;
+	border-style: dashed;
+    border-width: 2px;
+	border-color: #fff;
+}
+#box-1{
+	width: auto;
+	height: auto;
+	margin-left: 240px;
+}
+.line{
+	width: auto;
+	height: 1px;
+	background-color: #ccc;
+	margin-top: 100px;
+}
+#icon{
+	width: auto;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 600px;
+}
+

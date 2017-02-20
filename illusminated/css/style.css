@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+html,
+body {
+  height: 95vh;
+  background-color: #000;
+}
+
+body {
+  font-family: 'roboto', sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #2e3252  no-repeat center center;
+  background-size: cover;
+  -webkit-filter: brightness(60%) blur(5px);
+          filter: brightness(60%) blur(5px);
+  -webkit-transition: -webkit-filter 1.5s;
+  transition: -webkit-filter 1.5s;
+  transition: filter 1.5s;
+  transition: filter 1.5s, -webkit-filter 1.5s;
+}
+
+.hero-btn {
+  border: 2px solid white;
+  padding: 60px;
+  letter-spacing: 0.55em;
+  color: white;
+  z-index: 999;
+  margin: 25px;
+  line-height: 1.5;
+  -webkit-transition: all 2s, padding 700ms;
+  transition: all 2s, padding 700ms;
+}
+
+.hero-btn:hover + div {
+  -webkit-filter: brightness(70%);
+          filter: brightness(70%);
+}
+
+.hero-btn:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.3);
+  padding: 15em
+}
+
+.str {
+  -webkit-transition: 1s 1s;
+  transition: 1s 1s
+}
+
+.hero-btn:hover .str {
+  color: #ffcc99;
+}
+  

@@ -1,0 +1,41 @@
+
+.form1{
+	height: auto;
+	font-family: 'Prompt', sans-serif;
+	padding-left: 100px;
+	padding-bottom: 50px;
+	padding-top: 50px;
+	color: #00a3ae;
+}
+.data{
+	margin: 10px;
+}
+.submit1{
+	font-family: 'Prompt', sans-serif;
+	padding-left: 100px;
+	margin: 10px;
+}
+
+.tb1 table tr td {
+	font-family: 'Prompt', sans-serif;
+}
+.tb1 table tr th {
+	font-family: 'Prompt', sans-serif;
+}
+
+.submit:hover {
+	background-color: #339999;
+}
+
+.submit{
+	background-color: #0FA9A1;
+	width: 360px;
+	height: 46px;
+	color: white;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-top: 30px;
+	border: solid;
+	text-align: center;
+
+}

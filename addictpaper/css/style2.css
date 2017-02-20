@@ -1,0 +1,105 @@
+button{
+	background-color: #0FA9A1;
+	width: 100px;
+	height: 30px;
+	color: white;
+	border-radius: 3px;
+	font-size: 14px;
+	margin-left: 80px;
+}
+.head-line{
+	background: #612f0e;
+	height: 6px;
+}
+.head-dot{
+	border-top: 1px dotted #612f0e;
+	margin: 20px 0 20px 0;
+}
+.space-top{
+	margin: 30px;
+}
+#sliderHome{
+	height: 510px;
+	width: 100%;
+	position: relative;
+}
+#sliderHome img{
+	height: 510px;
+	width: 100%;
+}
+header{
+	height: 230px;
+	text-align: center;
+	/*background:#333;*/
+	position: relative;
+	font-size: 25px;
+
+
+}
+.head-logo{
+	width: auto;
+	height: 110px;
+	margin-top: 20px;
+	background-color: #ccc;
+	text-align: center;
+	background-color: #fff;
+}
+.user{
+	width: 150px;
+	height: 30px;
+	float: right;
+	font-size: 16px;
+	border-radius: 5px;
+	border-style: dashed;
+    border-width: 2px;
+	border-color: #ccc;
+	text-align: center;
+	padding-top: 10px;
+	margin-right: 5px;
+
+}
+.user a{
+	color: #000000;
+}
+.contain_user {
+	width: 100%;
+	height: 40px;
+	background-color: #FFFFFF;
+	margin-top: 20px;
+}
+.menu{
+	margin-top: 15px;
+
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+ul li{
+	display: inline;
+	margin-right: 10px;
+	
+}
+li a {
+	text-decoration: none;
+	color: black;
+}
+
+.head-dot {
+	border-top: 2px dashed #7A7A7A;
+	margin: 20px 0px 20px 0px;
+}
+button{
+
+}
+.order{
+	width: 200px;
+	height: 50px;
+	border-style: dashed;
+	ma: 20px;
+	font-size: 16px
+}

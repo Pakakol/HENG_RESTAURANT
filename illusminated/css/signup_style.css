@@ -1,0 +1,138 @@
+@charset="UTF-8";
+
+@font-face {
+    font-family: 'bangna_newregular';
+    src: url('bangna-new-webfont.woff2') format('woff2'),
+         url('bangna-new-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+	font-family: 'bangna_newregular';
+	font-weight: bold;
+	background-color: #2e3252;
+}
+
+#login_box{
+	width: 430px;
+	height: 820px;
+	background-color: #fff;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 80px;
+
+
+	
+}
+input{
+	width: 200px;
+	height: 30px;
+	margin-top: 20px;
+	font-size: 14px;
+	color: grey;
+	font-family: 'bangna_newregular';
+	padding-left: 13px;
+
+}
+
+
+input.submit:hover {
+	background-color: #339999;
+}
+
+input.submit{
+	background-color: #0FA9A1;
+	width: 360px;
+	height: 46px;
+	color: white;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-top: 30px;
+	border: solid;
+	text-align: center;
+
+}
+
+
+
+#head-logo{
+	padding-top: 20px;
+}
+
+img.logo {
+	width: 160px;
+	height: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+p1{
+	font-size: 12px;
+	color: grey;
+	margin-left: 100px;
+	
+}
+p2{
+	font-size: 16px;
+	color: black;
+	margin-left: 48px;
+	
+}
+a{
+	text-decoration: none;
+	color: #339999;
+}
+select {
+	width: 200px;
+	height: 30px;
+	font-family: 'bangna_newregular';
+	font-size: 14px;
+	color: grey;
+	border: 1px #ccc solid;
+	background-color: #fff;
+	margin-top: 20px;
+}
+#wraplogo{
+	margin-left: 98px;
+}
+@media screen and (max-width: 480px){
+
+#wraplogo {
+    margin-left: 30px;
+}
+#login_box {
+    width: 100%;
+    max-width: 300px;
+    height: 1000px;
+    background-color: #fff;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 50px;
+}
+input.submit {
+    background-color: #0FA9A1;
+    width: 200px;
+    height: 46px;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 30px;
+    border: solid;
+    text-align: center;
+}
+p1 {
+    font-size: 12px;
+    color: grey;
+     margin-left: 5px; 
+}
+input{
+	margin-top: 10px;
+}
+
+
+
+}

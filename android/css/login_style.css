@@ -1,0 +1,159 @@
+@charset="UTF-8";
+
+@media only screen and (max-width: 1500px){
+
+body{
+	font-family: 'Prompt', sans-serif;
+	font-weight: bold;
+	/*background-image: url("images/cover_illus-01.jpg");*/ 
+	background-color: #1d2d52;
+}
+
+#login_box{
+	width: 464px;
+	height: 520px;
+	background-color: #fff;
+	margin-top: 90px;
+	/*padding-left: 30px;*/
+	
+}
+input{
+	width: 360px;
+	height: 45px;
+	margin-top: 20px;
+	font-size: 14px;
+	color: grey;
+	font-family: 'Prompt', sans-serif;
+	padding-left: 15px;
+
+
+}
+input.submit:hover {
+	background-color: #339999;
+}
+
+input.submit{
+	background-color: #0FA9A1;
+	width: 360px;
+	height: 46px;
+	color: white;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-top: 20px;
+	border: solid;
+	text-align: center;
+
+
+}
+button{
+	background-color: #0FA9A1;
+	width: 360px;
+	height: 46px;
+	color: white;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-top: 10px;
+	border: solid;
+	font-family: 'Prompt', sans-serif;
+
+}
+button.facebook{
+	background-color: #3b5998;
+}
+
+button.facebook:hover{
+	background-color: #2F4678;
+}
+
+
+#head-logo{
+	padding-top: 20px;
+}
+
+img.logo {
+	width: 160px;
+	height: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+p1{
+	font-size: 12px;
+	color: grey;
+	
+}
+p2{
+	font-size: 16px;
+	color: black;
+	
+}
+a{
+	text-decoration: none;
+	color: #339999;
+}
+h3{
+	font-size: 16px;
+	font-family: 'Prompt', sans-serif;
+	color: grey;
+}
+p{
+	font-size: 16px;
+	font-family: 'Prompt', sans-serif;
+	color: grey;
+}
+
+#wrapper{
+	width: 100%;
+	/*max-width: 1500px;*/
+}
+}
+
+@media screen and (max-width: 480px){
+
+#wraplogo {
+    margin-left: 20px;
+
+}
+
+#wraplogo img{
+	margin-right: 50px;
+}
+#login_box {
+    width: 100%;
+    max-width: 350px;
+    height: 500px;
+    background-color: #fff;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+input.submit {
+    background-color: #0FA9A1;
+    width: 250px;
+    height: 46px;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 30px;
+    border: solid;
+    text-align: center;
+}
+p1 {
+    font-size: 12px;
+    color: grey;
+     margin-left: 5px; 
+}
+input{
+	width: 250px;
+	margin-top: 10px;
+}
+button.facebook{
+	width: 250px;
+}
+
+
+
+}
+
+

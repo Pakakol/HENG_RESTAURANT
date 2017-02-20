@@ -1,0 +1,38 @@
+.row1{
+	
+	width: auto;
+	height: 600px;
+	margin: 10px 200px 0px 200px;
+	
+	
+
+}
+button:hover {
+	background-color: #FF9966;
+}
+
+button{
+	background-color: #0FA9A1;
+	width: 100px;
+	height: 34px;
+	color: white;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-left: 80px;
+	border: solid;
+
+}
+
+.formcontrol{
+	width: 160px;
+	height: 20px;
+}
+
+h3{
+	font-size: 21px;
+}
+.review{
+	padding-top: 50px
+}
+
+
