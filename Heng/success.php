@@ -1,9 +1,14 @@
-<?php unset($_SESSION["menu"]);
- ?>
+<?php
+    session_start();
+    // $page_name = basename($_SERVER['PHP_SELF']);
+
+    // unset($_SESSION["number_product"]);
+
+?>
 
 <html>
 <head>
-	<title>Delivery | Cart</title>
+	<title>เฮง ยอดผัก</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/menu.css">
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -30,7 +35,7 @@
 
         <div class="menu-right">
         	<ul>
-        		<li> <i class="fa fa-shopping-cart"></i></li> |
+        		<li> <i class="fa fa-shopping-cart"></i><?php if(isset($_SESSION['number_product'])){ echo $_SESSION['number_product'];}?></li> |
         		<li>&nbsp PAKAKOL</li>
         	</ul>
 
@@ -60,6 +65,8 @@
 			
 
 			<div class="details_menu">
+
+	
 
 					
 						<h3>รวม : 100 บาท</h3>

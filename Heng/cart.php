@@ -1,8 +1,7 @@
-<?php session_start();
-    $page_name = basename($_SERVER['PHP_SELF']);
-
-    require './connect.php';
-  ?>
+<?php
+    session_start();
+    // $page_name = basename($_SERVER['PHP_SELF']);
+?>
 
 <html>
 <head>
@@ -33,7 +32,7 @@
 
         <div class="menu-right">
         	<ul>
-        		<li> <i class="fa fa-shopping-cart"></i></li> |
+        		<li> <a href="cart.php"><i class="fa fa-shopping-cart"></i>&nbsp;<?php if(isset($_SESSION['number_product'])){ echo $_SESSION['number_product'];}?></a></li> |
         		<li>&nbsp PAKAKOL</li>
         	</ul>
 
@@ -46,6 +45,12 @@
 	</div> <!-- END HEAD -->
 
 	<div class="head-dot"></div> &nbsp;
+
+
+	<?php 
+	require'connect.php';
+  $objConnect -> query("set names utf8");
+  ?>
 
 
 	<div class="menu-2">
@@ -61,75 +66,82 @@
 
 	<div class="wrap-cart">
 
+		
 		<?php 
+     if ($_SESSION['number_product']!=0) {
+       $i=1;
+     
+     foreach ($_SESSION['cart'] as $key => $menu) {
+       foreach ($menu as $key => $Menu_id) {
+        
+
+
+       $sql ="SELECT * FROM Menu WHERE Menu_id = '$Menu_id'";
+       $query = mysqli_query($objConnect,$sql);
+       
+          while ($rows=mysqli_fetch_array($query)) {
+
+            ?>
+
 		
 
-          $sql="SELECT * FROM Order;";
-          $query = mysqli_query($objConnect,$sql);
-
-          while ($rows=mysqli_fetch_array($query)) {
-            
-         ?> 
-
-
+     <form action="success.php" method="POST">
 
 		<div class="box-2">
-				<div class="cart-img"><img src="<?php  echo $rows['pics']; ?>"></div>
+				<div class="cart-img"><img src="<?php  echo $rows['images']; ?>"></div>
 				<div class="details-cart">
-					เส้นใหญ่ราดหน้า &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p2>40 บาท</p2>
+					<?php  echo $rows['Name']; ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p2><?php  echo $rows['Price']; ?></p2>
 
 				</div><!-- details-cart -->
 
-				<div class="add-bar">จำนวน&nbsp;&nbsp; <input type="text" id="numfood">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="add-bar">จำนวน&nbsp;&nbsp; <input type="text" id="numfood" value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button class="cart"><i class="fa fa-trash"></i>&nbsp;&nbsp;DELETE</button> </div><!-- add-bar -->
-		</div><!-- box-2 -->
-<?php }
-    ?>
-
-	</div><!-- wrap-cart -->
-
-	
-	
-
-	<div class="wrap-cart">
-
-		<div class="box-total">
-				ราคารวม  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100 บาท
-		</div><!-- box-2 -->
-
 		
-	</div><!-- wrap-cart -->
+					<script type="text/javascript">
+          
+        
+     function resultPrice<?php echo $i; ?>() {
+      var x = document.getElementById('resultPrice').value;
+      var totalPrice = document.getElementById('totalPrice-<?php echo $i ?>').value;
+      var total = +x + +totalPrice;
+
+      document.getElementById('resultPrice-text').innerHTML = total;
+      document.getElementById('resultPrice').value = total;
+
+     }
+      
+     </script>
+     
+
+
+
+		</div><!-- box-2 -->
+
+		<?php $i++; ?>
+            
+            <?php 
+            }//end while
+
+
+          }//end foreach
+       }//end foreach
+     }//end if
+      ?>
 	
 
-	<div class="head-dot"></div> 
 
-	<div class="wrap-cart">
-	
-		<h2>ส่งอาหารที่...</h2> <br>
-			<div class="address">
-
-				<form action="order_db.php" method="POST">
-
-				ชื่อ-นามสกุล*&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" class="ip-ad" name="name_customer"><br>
-				ที่อยู่*&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<textarea name="address"></textarea><br>
-				เบอร์โทร*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-				<input type="text" class="ip-ad" name="tel"><br>
-
-				<button id="back" >Back</button>
-				<a href="success.php"><button id="confirm">Confirm</button></a>
-				<!-- <button id="confirm" type="submit" value="confirm" name="confirm">Confirm</button> -->
-
-				  </form>
-
-	</div><!-- address -->
 	</div><!-- wrap-cart -->
+
+	
+
+
+	<div class="next-button"><a href="success.php"><button class="next">Next</button></a></div>
+	
+
+	
+
+</form>
 
 
 	<div class="head-dot"></div> 

@@ -1,6 +1,10 @@
-<?php session_start();
-    $page_name = basename($_SERVER['PHP_SELF']);
-  ?>
+<?php
+    session_start();
+    // $page_name = basename($_SERVER['PHP_SELF']);
+
+    //unset($_SESSION["number_product"]);
+	
+?>
 
   
 
@@ -11,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 
-	<title>Delivery |</title>
+	<title>เฮง ยอดผัก | รายการอาหาร</title>
 </head>
 
 <body>
@@ -35,7 +39,7 @@
 
         <div class="menu-right">
         	<ul>
-        		<li> <i class="fa fa-shopping-cart"></i></li> |
+        		<li> <a href="cart.php"><i class="fa fa-shopping-cart"></i>&nbsp;<?php if(isset($_SESSION['number_product'])){ echo $_SESSION['number_product'];}?></a></li> |
         		<li>&nbsp PAKAKOL</li>
 
         	</ul>
@@ -59,10 +63,6 @@
 	<div class="timeline">
 		<img src="img/time1.png">
 	</div><!-- end timeline -->
-
-
-
-
 
 
 
@@ -92,12 +92,15 @@
 
 			<div class="button-cart">
 
+		<form action="cart_add.php" method="POST">
+
+			<input type="hidden" name="product_fur" value="<?php echo $rows['Menu_id'];?>"><br>
+   
 			<a href="menu.php?Menu_id=<?php echo $rows['Menu_id']; ?>"><button class="cart"><i class="fa fa-shopping-cart"></i>&nbsp;เพิ่มลงตระกร้า</button></a>
 
+		</form>
+
 			</div><!-- end button-cart -->
-
-
-
 
 		</div><!-- box1 -->
 
@@ -117,10 +120,23 @@
 
 
 <?php 
-				$test =  $_GET["Menu_id"];
-				$SESSION["menu"][]= $test;
-				// unset($_SESSION["menu"]);
-				// var_dump($SESSION["menu"]);
+			var_dump(empty($_GET));
+			if (!(isset($SESSION["manu"])) && empty($_GET)) {
+				$SESSION["manu"]= array();
+				var_dump($SESSION["manu"]);
+				echo "fail";
+			} else if(!(isset($SESSION["manu"])) && !(empty($_GET))) {
+				$SESSION["manu"] = $_GET["Menu_id"];
+				var_dump($SESSION["manu"]); echo "true";
+			} else {
+				var_dump($SESSION["menu"]);
+				$SESSION["manu"]= array_push($SESSION["manu"], $_GET["Menu_id"]);
+				echo "test";
+				
+			}
+
+				
+				  // unset($_SESSION["menu"]);
 	?>
 
 </body>
