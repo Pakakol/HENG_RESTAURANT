@@ -1,6 +1,11 @@
-<?php session_start();
-    $page_name = basename($_SERVER['PHP_SELF']);
-  ?>
+<?php 
+
+	session_start();
+	require 'connect.php';
+
+    $meSql = "SELECT * FROM Beverage;";
+	$meQuery = mysqli_query($meConnect,$meSql);
+ ?>
 
 <html>
 <head>
@@ -67,22 +72,18 @@
 	<!--Food Line 3 -->
 	<div class="wrap-food"></center>
 
-		<?php 
-		require './connect.php';
+		<?php
+        while ($meResult = mysqli_fetch_assoc($meQuery))
+            {
+                ?>
 
 
-          $sql="SELECT * FROM Beverage;";
-          $query = mysqli_query($objConnect,$sql);
-
-          while ($rows=mysqli_fetch_array($query)) {
-            
-         ?> 
 
 		<div class="box1">
 
-			<div class="img-food"><img src="<?php  echo $rows['bvImages']; ?>"></div>
-			<div class="detail-food"><?php  echo $rows['bvName']; ?> <br>
-				<p2><?php  echo $rows['bvPrice']; ?></p2>
+			<div class="img-food"><img src="<?php  echo $meResult['bvImages']; ?>"></div>
+			<div class="detail-food"><?php  echo $meResult['bvName']; ?> <br>
+				<p2><?php  echo $meResult['bvPrice']; ?></p2>
 			</div><!-- detail-food -->
 
 			<div class="button-cart">
@@ -111,3 +112,7 @@
 
 </body>
 </html>
+
+<?php
+mysqli_close($meConnect);
+?>

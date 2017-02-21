@@ -1,9 +1,30 @@
 <?php
-    session_start();
-    // $page_name = basename($_SERVER['PHP_SELF']);
+session_start();
+require 'connect.php';
 
-    // unset($_SESSION["number_product"]);
-
+$action = isset($_GET['a']) ? $_GET['a'] : "";
+$itemCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+$_SESSION['formid'] = sha1('' . microtime());
+if (isset($_SESSION['qty'])) {
+	$meQty = 0;
+	foreach ($_SESSION['qty'] as $meItem) {
+		$meQty = $meQty + $meItem;
+	}
+} else {
+	$meQty = 0;
+}
+if (isset($_SESSION['cart']) and $itemCount > 0) {
+	$itemIds = "";
+	foreach ($_SESSION['cart'] as $itemId) {
+		$itemIds = $itemIds . $itemId . ",";
+	}
+	$inputItems = rtrim($itemIds, ",");
+	$meSql = "SELECT * FROM products WHERE id in ({$inputItems})";
+	$meQuery = mysqli_query($meConnect,$meSql);
+	$meCount = mysqli_num_rows($meQuery);
+} else {
+	$meCount = 0;
+}
 ?>
 
 <html>
@@ -35,7 +56,7 @@
 
         <div class="menu-right">
         	<ul>
-        		<li> <i class="fa fa-shopping-cart"></i><?php if(isset($_SESSION['number_product'])){ echo $_SESSION['number_product'];}?></li> |
+        		<li> <a href="cart.php"><i class="fa fa-shopping-cart"></i><?php echo $meQty; ?></a></li> |
         		<li>&nbsp PAKAKOL</li>
         	</ul>
 
@@ -59,30 +80,61 @@
 
 
 	<div class="wrap-cart">
+		<?php
+                        $total_price = 0;
+                        $num = 0;
+                        while ($meResult = mysqli_fetch_assoc($meQuery))
+                            {
+                            $key = array_search($meResult['id'], $_SESSION['cart']);
+                            $total_price = $total_price + ($meResult['product_price'] * $_SESSION['qty'][$key]);
+                            ?>
 		<div class="box_success">
 			
 				<img id="icon" src="img/checked.png">
-			
 
 			<div class="details_menu">
+				
 
-	
-
-					
-						<h3>รวม : 100 บาท</h3>
+						<h3>รวม : <?php echo number_format($total_price, 2); ?> บาท</h3>
 			
 						รายการอาหารที่สั่งเรียบร้อยแล้ว <br>
 						ขอบคุณที่ใช้บริการ <br>
 
-
 			</div><!-- details_menu -->
-				<button class="success_ok"> OK </button>
-		</div><!-- box-3 -->
+		</div><!-- box_success -->
+
+                <?php
+                }
+            ?>
+
+
+
+
+
+		<div class="box_success">
+			<form action="updateorder.php" method="post" name="formupdate" role="form" id="formupdate" onsubmit="JavaScript:return updateSubmit();">
+			
+				<h2>ส่งอาหารที่...</h2> <br>
+			<div class="address">
+				ชื่อ-นามสกุล*&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" class="ip-ad" id="order_fullname" name="order_fullname"><br>
+				ที่อยู่*&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<textarea id="order_address" name="order_address" ></textarea><br>
+				เบอร์โทร*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<input type="text" class="ip-ad" id="order_phone" name="order_phone"><br>
+
+				
+				<button id="confirm" type="submit">Confirm</button>
+	</div><!-- address -->
+
+			</div><!-- details_menu --></form>
+		</div><!-- box_success -->
 
 
 
 	</div><!-- wrap-cart -->
 	<div id="empty"></div>
+	
 
 <div class="head-dot"></div> 
 
@@ -93,3 +145,6 @@
 
 </body>
 </html>
+<?php
+mysqli_close($meConnect);
+?>

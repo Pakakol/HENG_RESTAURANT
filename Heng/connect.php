@@ -1,18 +1,15 @@
 <?php
-	
-	$connect ="localhost";
-	$db_user ="root";
-	$db_password="";
-	$db_select="Heng";
+/*
+ * set var
+ */
+$Host = "localhost";
+$User = "root";
+$Password = "";
+$Database = "Heng2";
 
-
-	$objConnect = mysqli_connect($connect,$db_user,$db_password,$db_select);
-
-	if (!$objConnect) {
-		echo "db error";
-	}
-
-
-	mysqli_query($objConnect,"SET NAMES UTF8");
-
+/*
+ * connection mysql
+ */
+$meConnect = mysqli_connect($Host, $User, $Password, $Database) or die("Error conncetion mysql");
+mysqli_query($meConnect,"SET NAMES UTF8");
 ?>

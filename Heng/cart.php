@@ -1,7 +1,39 @@
 <?php
-    session_start();
-    // $page_name = basename($_SERVER['PHP_SELF']);
+session_start();
+require 'connect.php';
+
+$action = isset($_GET['a']) ? $_GET['a'] : "";
+$itemCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+if (isset($_SESSION['qty']))
+{
+    $meQty = 0;
+    foreach ($_SESSION['qty'] as $meItem)
+    {
+        $meQty = $meQty + $meItem;
+    }
+} else
+{
+    $meQty = 0;
+}
+if (isset($_SESSION['cart']) and $itemCount > 0)
+{
+    $itemIds = "";
+    foreach ($_SESSION['cart'] as $itemId)
+    {
+        $itemIds = $itemIds . $itemId . ",";
+    }
+    $inputItems = rtrim($itemIds, ",");
+    $meSql = "SELECT * FROM products WHERE id in ({$inputItems})";
+    $meQuery = mysqli_query($meConnect,$meSql);
+    $meCount = mysqli_num_rows($meQuery);
+} else
+{
+
+    $meCount = 0;
+}
+
 ?>
+
 
 <html>
 <head>
@@ -32,7 +64,7 @@
 
         <div class="menu-right">
         	<ul>
-        		<li> <a href="cart.php"><i class="fa fa-shopping-cart"></i>&nbsp;<?php if(isset($_SESSION['number_product'])){ echo $_SESSION['number_product'];}?></a></li> |
+        		<li> <a href="cart.php"><i class="fa fa-shopping-cart"></i>&nbsp;<?php echo $meQty; ?></a></li> |
         		<li>&nbsp PAKAKOL</li>
         	</ul>
 
@@ -47,10 +79,7 @@
 	<div class="head-dot"></div> &nbsp;
 
 
-	<?php 
-	require'connect.php';
-  $objConnect -> query("set names utf8");
-  ?>
+	
 
 
 	<div class="menu-2">
@@ -65,73 +94,60 @@
 
 
 	<div class="wrap-cart">
+		<?php
+           
+            if ($meCount == 0)
+            {
+                echo "<div class=\"cart-pay\">ไม่มีสินค้าอยู่ในตะกร้า</div>";
+            } else
+            {
+                ?>
 
-		
-		<?php 
-     if ($_SESSION['number_product']!=0) {
-       $i=1;
-     
-     foreach ($_SESSION['cart'] as $key => $menu) {
-       foreach ($menu as $key => $Menu_id) {
-        
+                	<form action="updatecart.php" method="post" name="fromupdate">
 
-
-       $sql ="SELECT * FROM Menu WHERE Menu_id = '$Menu_id'";
-       $query = mysqli_query($objConnect,$sql);
-       
-          while ($rows=mysqli_fetch_array($query)) {
-
-            ?>
-
-		
-
-     <form action="success.php" method="POST">
+		<?php
+                            $total_price = 0;
+                            $num = 0;
+                            while ($meResult = mysqli_fetch_assoc($meQuery))
+                            {
+                                $key = array_search($meResult['id'], $_SESSION['cart']);
+                                $total_price = $total_price + ($meResult['product_price'] * $_SESSION['qty'][$key]);
+                                ?>
 
 		<div class="box-2">
-				<div class="cart-img"><img src="<?php  echo $rows['images']; ?>"></div>
+				<div class="cart-img"><img src="<?php echo $meResult['product_img_name']; ?>"></div>
 				<div class="details-cart">
-					<?php  echo $rows['Name']; ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p2><?php  echo $rows['Price']; ?></p2>
+					<?php echo $meResult['product_name']; ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p2><?php echo number_format($meResult['product_price'],2); ?></p2>
 
 				</div><!-- details-cart -->
 
-				<div class="add-bar">จำนวน&nbsp;&nbsp; <input type="text" id="numfood" value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button class="cart"><i class="fa fa-trash"></i>&nbsp;&nbsp;DELETE</button> </div><!-- add-bar -->
+				<div class="add-bar">จำนวน&nbsp;&nbsp; <input type="text" name="qty[<?php echo $num; ?>]" value="<?php echo $_SESSION['qty'][$key]; ?>" class="form-control" style="width: 60px;text-align: center;">
+                                        <input type="hidden" name="arr_key_<?php echo $num; ?>" value="<?php echo $key; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+					<a href="removecart.php?itemId=<?php echo $meResult['id']; ?>" role="button" class="cart"><i class="fa fa-trash"></i>&nbsp;&nbsp;DELETE</a></div><!-- add-bar -->
 		
-					<script type="text/javascript">
-          
-        
-     function resultPrice<?php echo $i; ?>() {
-      var x = document.getElementById('resultPrice').value;
-      var totalPrice = document.getElementById('totalPrice-<?php echo $i ?>').value;
-      var total = +x + +totalPrice;
-
-      document.getElementById('resultPrice-text').innerHTML = total;
-      document.getElementById('resultPrice').value = total;
-
-     }
-      
-     </script>
-     
+	
 
 
 
 		</div><!-- box-2 -->
+			<?php
+                                $num++;
+                            }
+                            ?>
 
-		<?php $i++; ?>
-            
-            <?php 
-            }//end while
 
-
-          }//end foreach
-       }//end foreach
-     }//end if
-      ?>
-	
+		<div class="box-total">ราคารวม :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo number_format($total_price,2); ?> </div>
 
 
 	</div><!-- wrap-cart -->
+	</form>
+ <?php
+            }
+            ?>
+
+
 
 	
 
@@ -141,7 +157,7 @@
 
 	
 
-</form>
+
 
 
 	<div class="head-dot"></div> 
@@ -152,3 +168,6 @@
 
 </body>
 </html>
+<?php
+mysqli_close($meConnect);
+?>

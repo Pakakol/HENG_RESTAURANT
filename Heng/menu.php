@@ -1,10 +1,22 @@
 <?php
-    session_start();
-    // $page_name = basename($_SERVER['PHP_SELF']);
+session_start();
+require 'connect.php';
 
-    //unset($_SESSION["number_product"]);
-	
+$meSql = "SELECT * FROM products ";
+$meQuery = mysqli_query($meConnect,$meSql);
+
+$action = isset($_GET['a']) ? $_GET['a'] : "";
+$itemCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+if(isset($_SESSION['qty'])){
+    $meQty = 0;
+    foreach($_SESSION['qty'] as $meItem){
+        $meQty = $meQty + $meItem;
+    }
+}else{
+    $meQty=0;
+}
 ?>
+
 
   
 
@@ -39,7 +51,7 @@
 
         <div class="menu-right">
         	<ul>
-        		<li> <a href="cart.php"><i class="fa fa-shopping-cart"></i>&nbsp;<?php if(isset($_SESSION['number_product'])){ echo $_SESSION['number_product'];}?></a></li> |
+        		<li> <a href="cart.php"><i class="fa fa-shopping-cart"></i>&nbsp;<?php echo $meQty; ?></a></li> |
         		<li>&nbsp PAKAKOL</li>
 
         	</ul>
@@ -69,22 +81,18 @@
 	<!--Food Line 3 -->
 	<div class="wrap-food"></center>
 
-		<?php 
-		require './connect.php';
+		<?php
+        while ($meResult = mysqli_fetch_assoc($meQuery))
+            {
+                ?>
 
 
-          $sql="SELECT * FROM Menu;";
-          $query = mysqli_query($objConnect,$sql);
-
-          while ($rows=mysqli_fetch_array($query)) {
-            
-         ?> 
 
 		<div class="box1">
 
-			<div class="img-food"><img src="<?php  echo $rows['images']; ?>"></div>
-			<div class="detail-food"><?php  echo $rows['Name']; ?> <br>
-				<p2><?php  echo $rows['Price']; ?></p2>
+			<div class="img-food"><img src="<?php  echo $meResult['product_img_name']; ?>"></div>
+			<div class="detail-food"><?php  echo $meResult['product_name']; ?> <br>
+				<p2><?php  echo $meResult['product_price']; ?></p2>
 			</div><!-- detail-food -->
 
 
@@ -92,13 +100,13 @@
 
 			<div class="button-cart">
 
-		<form action="cart_add.php" method="POST">
+		<!-- <form action="cart_add.php" method="POST"> -->
 
-			<input type="hidden" name="product_fur" value="<?php echo $rows['Menu_id'];?>"><br>
+			<input type="hidden" ><br>
    
-			<a href="menu.php?Menu_id=<?php echo $rows['Menu_id']; ?>"><button class="cart"><i class="fa fa-shopping-cart"></i>&nbsp;เพิ่มลงตระกร้า</button></a>
+			<a href="updatecart.php?itemId=<?php echo $meResult['id']; ?>" role="button" ><button class="cart"><i class="fa fa-shopping-cart"></i>&nbsp;เพิ่มลงตระกร้า</button></a>
 
-		</form>
+		<!-- </form> -->
 
 			</div><!-- end button-cart -->
 
@@ -119,26 +127,10 @@
 	<footer><center><img src="img/footer.png"></center></footer>
 
 
-<?php 
-			var_dump(empty($_GET));
-			if (!(isset($SESSION["manu"])) && empty($_GET)) {
-				$SESSION["manu"]= array();
-				var_dump($SESSION["manu"]);
-				echo "fail";
-			} else if(!(isset($SESSION["manu"])) && !(empty($_GET))) {
-				$SESSION["manu"] = $_GET["Menu_id"];
-				var_dump($SESSION["manu"]); echo "true";
-			} else {
-				var_dump($SESSION["menu"]);
-				$SESSION["manu"]= array_push($SESSION["manu"], $_GET["Menu_id"]);
-				echo "test";
-				
-			}
 
-				
-				  // unset($_SESSION["menu"]);
-	?>
 
 </body>
 </html>
-
+<?php
+mysqli_close($meConnect);
+?>
