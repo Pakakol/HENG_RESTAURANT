@@ -192,6 +192,7 @@ p2{
 	font-size: 25px;
 	font-weight: bold;
 }
+
 .button-cart{
 	width: 40%;
 	height: auto;
@@ -199,6 +200,8 @@ p2{
 
 
 }
+
+
 a.cart{
 	width: 110px;
 	height: 33px;
@@ -440,7 +443,22 @@ button.success_ok{
 	padding-top: 40px; 
 }
 
-
+button.cart{
+	width: 110px;
+	height: 33px;
+	background-color: white;
+	font-family: 'quarklight';
+	font-size: 15px;
+	border-radius: 5px;
+	text-align: center;
+	border: 0.5px solid #ccc;
+	color: #333333;
+	margin-top: 15px;
+}
+button.cart:hover{
+	background-color: #006633;
+	color: white;
+}
 
 
 

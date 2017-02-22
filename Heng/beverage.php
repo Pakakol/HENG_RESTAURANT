@@ -38,7 +38,7 @@
 
         <div class="menu-right">
         	<ul>
-        		<li> <i class="fa fa-shopping-cart"></i></li> |
+        		<li> <i class="fa fa-shopping-cart"></i>&nbsp; 0</li> |
         		<li>&nbsp PAKAKOL</li>
 
         	</ul>
@@ -83,7 +83,7 @@
 
 			<div class="img-food"><img src="<?php  echo $meResult['bvImages']; ?>"></div>
 			<div class="detail-food"><?php  echo $meResult['bvName']; ?> <br>
-				<p2><?php  echo $meResult['bvPrice']; ?></p2>
+				<p2><?php  echo $meResult['bvPrice']; ?> บาท</p2>
 			</div><!-- detail-food -->
 
 			<div class="button-cart">

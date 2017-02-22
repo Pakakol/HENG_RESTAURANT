@@ -92,7 +92,7 @@ if(isset($_SESSION['qty'])){
 
 			<div class="img-food"><img src="<?php  echo $meResult['product_img_name']; ?>"></div>
 			<div class="detail-food"><?php  echo $meResult['product_name']; ?> <br>
-				<p2><?php  echo $meResult['product_price']; ?></p2>
+				<p2><?php  echo $meResult['product_price']; ?> บาท</p2>
 			</div><!-- detail-food -->
 
 
